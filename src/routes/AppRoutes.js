@@ -1,31 +1,22 @@
 import { Routes, Route } from "react-router-dom";
-import ProtectedRoute from "../components/ProtectedRoute";
+import AppLayout from "./AppLayout";
 import Dashboard from "../pages/Dashboard";
+import Profile from "../pages/Profile";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 
-const routes = [
-  { path: "/", element: (props) => <Login {...props} /> },
-  { path: "/signup", element: <Signup /> },
-  { path: "/dashboard", element: <ProtectedRoute component={Dashboard} /> },
-];
-
-function AppRoutes({ setUser }) {
+const AppRoutes = ({ user, setUser }) => {
   return (
     <Routes>
-      {routes.map((route, index) => (
-        <Route
-          key={index}
-          path={route.path}
-          element={
-            typeof route.element === "function"
-              ? route.element({ setUser })
-              : route.element
-          }
-        />
-      ))}
+      <Route path="/" element={<Login setUser={setUser} />} />
+      <Route path="/signup" element={<Signup setUser={setUser} />} />
+
+      <Route element={<AppLayout user={user} />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<Profile />} />
+      </Route>
     </Routes>
   );
-}
+};
 
 export default AppRoutes;
