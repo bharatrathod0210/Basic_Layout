@@ -171,23 +171,13 @@ import {
   Alert,
   InputAdornment,
   IconButton,
-  Divider,
   Paper,
-  Grid,
   Checkbox,
   FormControlLabel,
   useTheme,
   useMediaQuery,
 } from "@mui/material";
-import {
-  Visibility,
-  VisibilityOff,
-  Email,
-  Lock,
-  Google,
-  GitHub,
-  LinkedIn,
-} from "@mui/icons-material";
+import { Visibility, VisibilityOff, Email, Lock } from "@mui/icons-material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -237,10 +227,6 @@ function Login({ setUser }) {
     },
   });
 
-  const handleSocialLogin = (provider) => {
-    toast.info(`${provider} login coming soon!`);
-  };
-
   return (
     <Container
       maxWidth="lg"
@@ -263,7 +249,6 @@ function Login({ setUser }) {
           borderRadius: 2,
         }}
       >
-        {/* Left side - Image/Branding */}
         {!isMobile && (
           <Box
             sx={{
@@ -322,7 +307,6 @@ function Login({ setUser }) {
           </Box>
         )}
 
-        {/* Right side - Login Form */}
         <Box sx={{ flex: "1 1 60%", p: { xs: 3, md: 5 } }}>
           <Box sx={{ maxWidth: 400, mx: "auto" }}>
             <Box sx={{ mb: 4, textAlign: "center" }}>

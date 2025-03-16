@@ -219,7 +219,6 @@ import {
   Alert,
   InputAdornment,
   IconButton,
-  Divider,
   Paper,
   Grid,
   Checkbox,
@@ -237,9 +236,6 @@ import {
   Email,
   Person,
   Lock,
-  Google,
-  GitHub,
-  LinkedIn,
   ArrowBack,
   ArrowForward,
   CheckCircle,
@@ -262,7 +258,6 @@ function Signup() {
 
   const steps = ["Personal Info", "Account Security", "Confirmation"];
 
-  // Validation Schema using Yup
   const validationSchema = Yup.object({
     fullName: Yup.string()
       .min(2, "Full Name must be at least 2 characters")
@@ -360,10 +355,6 @@ function Signup() {
 
   const handleBack = () => {
     setActiveStep((prevStep) => prevStep - 1);
-  };
-
-  const handleSocialSignup = (provider) => {
-    toast.info(`${provider} signup coming soon!`);
   };
 
   const renderStepContent = (step) => {
